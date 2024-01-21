@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/rathmerdominik/mmnm-crew-manager/issues/"
+
+[[mods]]
+	modId="${mod_id}"
+	version="${mod_version}"
+	displayName="${mod_name}"
+	updateJSONURL="https://raw.githubusercontent.com/rathmerdominik/mmnm-crew-manager/main/updates.json"
+	displayURL="https://github.com/rathmerdominik/mmnm-crew-manager"
+	logoFile="mmnmcrewmanager.png"
+	credits="DerHammerclock"
+	authors="${mod_authors}"
+	description='''${mod_description}'''
+
+[[dependencies.mineminenomi]] 
+	modId = "mineminenomi"
+	mandatory = true
+	versionRange = "[0.9.5,)"
+	ordering = "AFTER"
+	side = "SERVER"
+
+[[dependencies.dcintegration]]
+	modId = "dcintegration"
+	mandatory = false
+	versionRange = "[3.0.5,)"
+	ordering = "AFTER"
+	side = "SERVER"
