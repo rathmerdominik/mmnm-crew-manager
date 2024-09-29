@@ -14,42 +14,42 @@ import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public class CrewDisplayWorldData extends WorldSavedData{
-	public static final Logger LOGGER = LogManager.getLogger(CrewManager.PROJECT_ID);
+    public static final Logger LOGGER = LogManager.getLogger(CrewManager.PROJECT_ID);
     private static final String IDENTIFIER = CrewManager.PROJECT_ID + "-crew-display";
-    
+
     private Map<String, Long> crewThreadMapping = new HashMap<>();
 
-	public static Optional<CrewDisplayWorldData> get() {
-		if (ServerLifecycleHooks.getCurrentServer() != null) {
-			return Optional.of(ServerLifecycleHooks.getCurrentServer().overworld().getDataStorage().computeIfAbsent(CrewDisplayWorldData::new, IDENTIFIER));
-		}
-		return Optional.empty();
-	}
+    public static Optional<CrewDisplayWorldData> get() {
+        if (ServerLifecycleHooks.getCurrentServer() != null) {
+            return Optional.of(ServerLifecycleHooks.getCurrentServer().overworld().getDataStorage().computeIfAbsent(CrewDisplayWorldData::new, IDENTIFIER));
+        }
+        return Optional.empty();
+    }
 
     public CrewDisplayWorldData(String identifier)
-	{
-		super(identifier);
-	}
+    {
+        super(identifier);
+    }
 
     public CrewDisplayWorldData() {
-		this(IDENTIFIER);
-	}
+        this(IDENTIFIER);
+    }
 
     public void load(CompoundNBT nbt) {
         CompoundNBT crewThreadMappingNBT = nbt.getCompound("crewThreadMappingNBT");
 
-		this.crewThreadMapping.clear();
-		crewThreadMappingNBT.getAllKeys().stream().forEach(x -> 
+        this.crewThreadMapping.clear();
+        crewThreadMappingNBT.getAllKeys().stream().forEach(x -> 
                 this.crewThreadMapping.put(x, crewThreadMappingNBT.getLong(x))
             );
     }
 
     public CompoundNBT save(CompoundNBT nbt) {        
         CompoundNBT crewThreadMappingNBT = new CompoundNBT();
-		if (this.crewThreadMapping.size() > 0) {
-			this.crewThreadMapping.entrySet().stream().forEach(x -> crewThreadMappingNBT.putLong(x.getKey(), x.getValue()));
-		}
-		nbt.put("crewThreadMappingNBT", crewThreadMappingNBT);
+        if (this.crewThreadMapping.size() > 0) {
+            this.crewThreadMapping.entrySet().stream().forEach(x -> crewThreadMappingNBT.putLong(x.getKey(), x.getValue()));
+        }
+        nbt.put("crewThreadMappingNBT", crewThreadMappingNBT);
 
         return nbt;
     }
