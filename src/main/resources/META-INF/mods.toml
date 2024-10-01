@@ -17,7 +17,7 @@ issueTrackerURL="https://github.com/rathmerdominik/mmnm-crew-manager/issues/"
 [[dependencies.${mod_id}]]
 	modId = "mineminenomi"
 	mandatory = true
-	versionRange = "[0.10.3,)"
+	versionRange = "[0.10.2,)"
 	ordering = "AFTER"
 	side = "SERVER"
 

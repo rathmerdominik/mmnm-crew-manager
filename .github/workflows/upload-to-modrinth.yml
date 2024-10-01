@@ -37,12 +37,6 @@ jobs:
         echo "VERSION_TYPE=${TAG_INFO[2]}" >> $GITHUB_ENV
         echo "CHANGELOG_MESSAGE=${TAG_INFO[@]:2}" >> $GITHUB_ENV
         echo "CHANGELOG_TYPE=${TAG_INFO[1]}" >> $GITHUB_ENV
-    
-    - name: Get dependencies
-      run: |
-        cd libs
-        curl -LO https://github.com/rathmerdominik/mine-mine-no-mi-modded/raw/main/release/mine-mine-no-mi-1.16.5-0.9.5-HAMMER.jar
-        cd ..
 
     - name: Run ./gradlew updateInformation
       run: |
